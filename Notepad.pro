@@ -20,7 +20,6 @@ SOURCES += \
     notepad.cpp
 
 HEADERS += \
-    headers.h \
     notepad.h
 
 FORMS += \

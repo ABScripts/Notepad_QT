@@ -2,10 +2,16 @@
 #define NOTEPAD_H
 
 #include <QMainWindow>
-#include <QtWidgets>
+
+#include <QClipboard>
+#include <QGuiApplication>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class Notepad; }
+namespace Ui {
+class Notepad;
+}
+class QFile;
+
 QT_END_NAMESPACE
 
 class Notepad : public QMainWindow
@@ -17,27 +23,7 @@ public:
     ~Notepad();
 
     void openFile(QFile *file);
-
     void saveFile(QFile *file);
-
-
-
-private:
-    Ui::Notepad *ui;
-
-    QClipboard *clipboard = QGuiApplication::clipboard();
-
-    int textEditScale = 0;
-
-    QString currentFilePath = "";
-
-    bool textChanged = false;
-
-private:
-
-    void interactWithFile(QString fileName, QIODevice::OpenModeFlag flag,
-                           void (Notepad::*action)(QFile *file));
-
 
 private slots:
     void changeColor();
@@ -46,5 +32,15 @@ private slots:
     void saveFileAs();
     void setZoom();
     void saveFile();
+
+private:
+    void interactWithFile(const QString &fileName, QIODevice::OpenModeFlag flag,
+                          void (Notepad::*action)(QFile *file));
+private:
+    Ui::Notepad *ui{nullptr};
+    QClipboard *clipboard = QGuiApplication::clipboard();
+    int mTextEditScale = 0;
+    QString mCurrentFilePath = "";
+    bool mIsTextChanged = false;
 };
 #endif // NOTEPAD_H

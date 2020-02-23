@@ -1,6 +1,6 @@
-#include "notepad.h"
-
 #include <QApplication>
+
+#include "notepad.h"
 
 int main(int argc, char *argv[])
 {
