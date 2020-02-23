@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Notepad</class>
+ <widget class="QMainWindow" name="Notepad">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>675</width>
+    <height>564</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Notepad</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTextEdit" name="textEdit"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>675</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Файл</string>
+    </property>
+    <addaction name="openFile"/>
+    <addaction name="saveFile"/>
+    <addaction name="saveFileAs"/>
+   </widget>
+   <widget class="QMenu" name="format">
+    <property name="title">
+     <string>Формат</string>
+    </property>
+    <addaction name="fontWindow"/>
+    <addaction name="textColor"/>
+    <addaction name="separator"/>
+    <addaction name="undoAction"/>
+    <addaction name="redoAction"/>
+    <addaction name="separator"/>
+    <addaction name="cutText"/>
+    <addaction name="copyText"/>
+    <addaction name="pasteText"/>
+    <addaction name="separator"/>
+    <addaction name="selectAll"/>
+   </widget>
+   <widget class="QMenu" name="view">
+    <property name="title">
+     <string>Вигляд</string>
+    </property>
+    <widget class="QMenu" name="zoom">
+     <property name="title">
+      <string>Масштаб</string>
+     </property>
+     <addaction name="zoomIn"/>
+     <addaction name="zoomOut"/>
+     <addaction name="setDefault"/>
+    </widget>
+    <addaction name="zoom"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="format"/>
+   <addaction name="view"/>
+  </widget>
+  <action name="openFile">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../Desktop/images/blue-folder-open-document.png</normaloff>../../Desktop/images/blue-folder-open-document.png</iconset>
+   </property>
+   <property name="text">
+    <string>Відкрити</string>
+   </property>
+  </action>
+  <action name="saveFileAs">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../Desktop/images/disk.png</normaloff>../../Desktop/images/disk.png</iconset>
+   </property>
+   <property name="text">
+    <string>Зберегти як...</string>
+   </property>
+  </action>
+  <action name="fontWindow">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../Desktop/images/edit-bold.png</normaloff>../../Desktop/images/edit-bold.png</iconset>
+   </property>
+   <property name="text">
+    <string>Шрифт</string>
+   </property>
+  </action>
+  <action name="undoAction">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../../Desktop/images/arrow-curve-180-left.png</normaloff>../../Desktop/images/arrow-curve-180-left.png</iconset>
+   </property>
+   <property name="text">
+    <string>Скасувати</string>
+   </property>
+  </action>
+  <action name="redoAction">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../../Desktop/images/arrow-curve.png</normaloff>../../Desktop/images/arrow-curve.png</iconset>
+   </property>
+   <property name="text">
+    <string>Повторити</string>
+   </property>
+  </action>
+  <action name="zoomIn">
+   <property name="text">
+    <string>Збільшити</string>
+   </property>
+  </action>
+  <action name="zoomOut">
+   <property name="text">
+    <string>Зменшити</string>
+   </property>
+  </action>
+  <action name="setDefault">
+   <property name="text">
+    <string>Відновити за замовчуванням</string>
+   </property>
+  </action>
+  <action name="saveFile">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../Desktop/images/disk.png</normaloff>../../Desktop/images/disk.png</iconset>
+   </property>
+   <property name="text">
+    <string>Зберегти</string>
+   </property>
+  </action>
+  <action name="textColor">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../Desktop/images/edit-color.png</normaloff>../../Desktop/images/edit-color.png</iconset>
+   </property>
+   <property name="text">
+    <string>Колір тексту</string>
+   </property>
+  </action>
+  <action name="cutText">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../../Desktop/images/scissors.png</normaloff>../../Desktop/images/scissors.png</iconset>
+   </property>
+   <property name="text">
+    <string>Вирізати</string>
+   </property>
+  </action>
+  <action name="pasteText">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../../Desktop/images/clipboard-paste-document-text.png</normaloff>../../Desktop/images/clipboard-paste-document-text.png</iconset>
+   </property>
+   <property name="text">
+    <string>Вставити</string>
+   </property>
+  </action>
+  <action name="copyText">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../../Desktop/images/document-copy.png</normaloff>../../Desktop/images/document-copy.png</iconset>
+   </property>
+   <property name="text">
+    <string>Копіювати</string>
+   </property>
+  </action>
+  <action name="selectAll">
+   <property name="text">
+    <string>Виділити все</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
