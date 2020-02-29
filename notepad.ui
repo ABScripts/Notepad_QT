@@ -2,12 +2,15 @@
 <ui version="4.0">
  <class>Notepad</class>
  <widget class="QMainWindow" name="Notepad">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>675</width>
-    <height>564</height>
+    <width>940</width>
+    <height>740</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -19,10 +22,142 @@
   <property name="windowTitle">
    <string>Notepad</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="icons.qrc">
+    <normaloff>:/icons/icons/accessories-text-editor.png</normaloff>:/icons/icons/accessories-text-editor.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Triangular</enum>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QTextEdit" name="textEdit"/>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <widget class="QLabel" name="infoBar">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
+      <property name="midLineWidth">
+       <number>1</number>
+      </property>
+      <property name="text">
+       <string>100%  | Безпечний режим: виключено</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QTextEdit" name="textEdit">
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>149</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>208</red>
+            <green>208</green>
+            <blue>208</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>149</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>208</red>
+            <green>208</green>
+            <blue>208</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>120</green>
+            <blue>215</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="HighlightedText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>208</red>
+            <green>208</green>
+            <blue>208</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">margin: 0;
+padding: -10;
+border: none;
+
+</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -31,7 +166,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>675</width>
+     <width>940</width>
      <height>21</height>
     </rect>
    </property>
@@ -47,12 +182,20 @@
     <property name="title">
      <string>Формат</string>
     </property>
+    <widget class="QMenu" name="fontsColor">
+     <property name="title">
+      <string>Текст і колір</string>
+     </property>
+     <addaction name="fontColor"/>
+     <addaction name="backgroundFontColor"/>
+    </widget>
     <addaction name="fontWindow"/>
-    <addaction name="textColor"/>
+    <addaction name="fontsColor"/>
     <addaction name="separator"/>
     <addaction name="undoAction"/>
     <addaction name="redoAction"/>
     <addaction name="separator"/>
+    <addaction name="findText"/>
     <addaction name="cutText"/>
     <addaction name="copyText"/>
     <addaction name="pasteText"/>
@@ -64,8 +207,20 @@
      <string>Вигляд</string>
     </property>
     <widget class="QMenu" name="zoom">
+     <property name="geometry">
+      <rect>
+       <x>595</x>
+       <y>103</y>
+       <width>227</width>
+       <height>116</height>
+      </rect>
+     </property>
      <property name="title">
       <string>Масштаб</string>
+     </property>
+     <property name="icon">
+      <iconset resource="icons.qrc">
+       <normaloff>:/icons/icons/system-search.png</normaloff>:/icons/icons/system-search.png</iconset>
      </property>
      <addaction name="zoomIn"/>
      <addaction name="zoomOut"/>
@@ -73,32 +228,46 @@
     </widget>
     <addaction name="zoom"/>
    </widget>
+   <widget class="QMenu" name="additionalFeatures">
+    <property name="title">
+     <string>Додаткові можливості</string>
+    </property>
+    <addaction name="safeData"/>
+    <addaction name="changeFontFor"/>
+   </widget>
    <addaction name="menu"/>
    <addaction name="format"/>
    <addaction name="view"/>
+   <addaction name="additionalFeatures"/>
   </widget>
   <action name="openFile">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/images/blue-folder-open-document.png</normaloff>../../Desktop/images/blue-folder-open-document.png</iconset>
+    <iconset theme="blue-folder-open-dicument.png" resource="icons.qrc">
+     <normaloff>:/icons/icons/document-open.png</normaloff>:/icons/icons/document-open.png</iconset>
    </property>
    <property name="text">
-    <string>Відкрити</string>
+    <string>Відкрити                          </string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="saveFileAs">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/images/disk.png</normaloff>../../Desktop/images/disk.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/document-save-as.png</normaloff>:/icons/icons/document-save-as.png</iconset>
    </property>
    <property name="text">
-    <string>Зберегти як...</string>
+    <string>Зберегти як...                  </string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
    </property>
   </action>
   <action name="fontWindow">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/images/edit-bold.png</normaloff>../../Desktop/images/edit-bold.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/font-x-generic.png</normaloff>:/icons/icons/font-x-generic.png</iconset>
    </property>
    <property name="text">
     <string>Шрифт</string>
@@ -109,11 +278,14 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/images/arrow-curve-180-left.png</normaloff>../../Desktop/images/arrow-curve-180-left.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/edit-undo.png</normaloff>:/icons/icons/edit-undo.png</iconset>
    </property>
    <property name="text">
-    <string>Скасувати</string>
+    <string>Скасувати          </string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
    </property>
   </action>
   <action name="redoAction">
@@ -121,44 +293,58 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/images/arrow-curve.png</normaloff>../../Desktop/images/arrow-curve.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/edit-redo.png</normaloff>:/icons/icons/edit-redo.png</iconset>
    </property>
    <property name="text">
-    <string>Повторити</string>
+    <string>Повторити        </string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y</string>
    </property>
   </action>
   <action name="zoomIn">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/list-add.png</normaloff>:/icons/icons/list-add.png</iconset>
+   </property>
    <property name="text">
-    <string>Збільшити</string>
+    <string>Збільшити            </string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
    </property>
   </action>
   <action name="zoomOut">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/list-remove.png</normaloff>:/icons/icons/list-remove.png</iconset>
+   </property>
    <property name="text">
-    <string>Зменшити</string>
+    <string>Зменшити             </string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+M</string>
    </property>
   </action>
   <action name="setDefault">
    <property name="text">
     <string>Відновити за замовчуванням</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
   </action>
   <action name="saveFile">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/images/disk.png</normaloff>../../Desktop/images/disk.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/document-save.png</normaloff>:/icons/icons/document-save.png</iconset>
    </property>
    <property name="text">
-    <string>Зберегти</string>
+    <string>Зберегти                          </string>
    </property>
-  </action>
-  <action name="textColor">
-   <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/images/edit-color.png</normaloff>../../Desktop/images/edit-color.png</iconset>
-   </property>
-   <property name="text">
-    <string>Колір тексту</string>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="cutText">
@@ -166,11 +352,14 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/images/scissors.png</normaloff>../../Desktop/images/scissors.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/edit-cut.png</normaloff>:/icons/icons/edit-cut.png</iconset>
    </property>
    <property name="text">
-    <string>Вирізати</string>
+    <string>Вирізати           </string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
    </property>
   </action>
   <action name="pasteText">
@@ -178,11 +367,14 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/images/clipboard-paste-document-text.png</normaloff>../../Desktop/images/clipboard-paste-document-text.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/edit-paste.png</normaloff>:/icons/icons/edit-paste.png</iconset>
    </property>
    <property name="text">
-    <string>Вставити</string>
+    <string>Вставити          </string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
    </property>
   </action>
   <action name="copyText">
@@ -190,19 +382,62 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/images/document-copy.png</normaloff>../../Desktop/images/document-copy.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/edit-copy.png</normaloff>:/icons/icons/edit-copy.png</iconset>
    </property>
    <property name="text">
-    <string>Копіювати</string>
+    <string>Копіювати        </string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
    </property>
   </action>
   <action name="selectAll">
    <property name="text">
-    <string>Виділити все</string>
+    <string>Виділити все   </string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="fontColor">
+   <property name="text">
+    <string>Колір тексту</string>
+   </property>
+  </action>
+  <action name="backgroundFontColor">
+   <property name="text">
+    <string>Задній колір тексту</string>
+   </property>
+  </action>
+  <action name="safeData">
+   <property name="text">
+    <string>Безпечний режим       </string>
+   </property>
+   <property name="toolTip">
+    <string>Дизактивує вікно вводу тексту</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="findText">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/edit-find.png</normaloff>:/icons/icons/edit-find.png</iconset>
+   </property>
+   <property name="text">
+    <string>Знайти</string>
+   </property>
+  </action>
+  <action name="changeFontFor">
+   <property name="text">
+    <string>Змінити шрифт на проміжку</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

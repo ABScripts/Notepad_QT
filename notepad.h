@@ -2,6 +2,7 @@
 #define NOTEPAD_H
 
 #include <QMainWindow>
+#include "findmatcheswindow.h"
 
 #include <QClipboard>
 #include <QGuiApplication>
@@ -22,10 +23,17 @@ public:
     Notepad(QWidget *parent = nullptr);
     ~Notepad();
 
-    void openFile(QFile *file);
-    void saveFile(QFile *file);
+    void sopenFile(QFile *file);
+    void ssaveFile(QFile *file);
+    void changeInfoBar(int scale, QString safeMoedEnabled);
 
 private slots:
+    void changeFontFor();
+
+    void selectSomeText(int position, int eposition);
+    void changeBackgroundColor();
+    void onSafeDataMode();
+    void setFindWindow();
     void changeColor();
     void changeFont();
     void openFileAs();
@@ -36,8 +44,10 @@ private slots:
 private:
     void interactWithFile(const QString &fileName, QIODevice::OpenModeFlag flag,
                           void (Notepad::*action)(QFile *file));
+
 private:
     Ui::Notepad *ui{nullptr};
+    Ui::FindMatchesWindow *findWindow{nullptr};
     QClipboard *clipboard = QGuiApplication::clipboard();
     int mTextEditScale = 0;
     QString mCurrentFilePath = "";
